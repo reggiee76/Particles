@@ -90,13 +90,35 @@ namespace Matrices
             return false;
         for (int i = 0; i < a.getRows(); ++i) {
             for (int j = 0; j < a.getCols(); ++j) {
-                if(fabs( a(i,j) - b(i,j)) > 0.00001)return false;
+                if (fabs(a(i, j) - b(i, j)) > 0.00001)return false;
             }
         }
         return true;
     }
 
-    bool operator!=(const Matrix& a, const Matrix& b){
+    bool operator!=(const Matrix &a, const Matrix &b) {
         return !(a == b);
     }
+
+    RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2) {
+        this->a(0, 0) = std::cos(theta);
+        this->a(0, 1) = -std::sin(theta);
+        this->a(1, 0) = std::sin(theta);
+        this->a(1, 1) = std::cos(theta);
+    }
+
+    ScalingMatrix::ScalingMatrix(double scale) : Matrix(2, 2) {
+        this->a(0, 0) = scale;
+        this->a(0, 1) = 0;
+        this->a(1, 0) = 0;
+        this->a(1, 1) = scale;
+    }
+
+    TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols) {
+        for (int i = 0; i < nCols; ++i) {
+            this->a(i, 0) = xShift;
+            this->a(i, 1) = yShift;
+        }
+    }
+
 }
