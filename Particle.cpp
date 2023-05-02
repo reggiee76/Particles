@@ -11,8 +11,8 @@ void Particle::unitTests()
     int score = 0;
 
     cout << "Testing RotationMatrix constructor...";
-    double theta = M_PI / 4.0;
-    RotationMatrix r(M_PI / 4);
+    double theta = PI / 4.0;
+    RotationMatrix r(PI / 4);
     if (r.getRows() == 2 && r.getCols() == 2 && almostEqual(r(0, 0), cos(theta))
         && almostEqual(r(0, 1), -sin(theta))
         && almostEqual(r(1, 0), sin(theta))
@@ -75,7 +75,7 @@ void Particle::unitTests()
 
     cout << "Applying one rotation of 90 degrees about the origin..." << endl;
     Matrix initialCoords = m_A;
-    rotate(M_PI / 2.0);
+    rotate(PI / 2.0);
     bool rotationPassed = true;
     for (int j = 0; j < initialCoords.getCols(); j++)
     {
@@ -156,7 +156,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
 
 
     // Initialize m_radiansPerSec to a random 
-    // angular velocity in the range [0:M_PI]
+    // angular velocity in the range [0:PI]
 
     // m_cartesianPlane will be used to map between monitor coordinates 
     // and Cartesian coordinates that are centered about the origin (0,0)
