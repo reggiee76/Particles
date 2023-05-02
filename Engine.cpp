@@ -24,10 +24,10 @@ void Engine::run()
 	while (m_Window.isOpen())
 	{
 		// Restart Clock - Return Time elapsed since the last frame
-		Time rstrt = clk.restart();
+		Time dt = clk.restart();
 
 		// Convert clock time to seconds
-		float toSeconds = rstrt.asSeconds();
+		float toSeconds = dt.asSeconds();
 
 		// Call input to handle user input
 		input();
