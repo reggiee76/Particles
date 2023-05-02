@@ -61,4 +61,42 @@ namespace Matrices
 		}
 		return c;
 	}
+
+    Matrix operator*(const Matrix &a, const Matrix &b) {
+        int ar = a.getRows();
+        int ac = a.getCols();
+        int br = b.getRows();
+        int bc = b.getCols();
+
+        if (ac != br) {
+            throw runtime_error("Error: dimensions must agree");
+        }
+
+        Matrices::Matrix c(ar, bc);
+        for (int i = 0; i < ar; i++) {
+            for (int k = 0; k < bc; ++k) {
+                double sum = 0;
+                for (int j = 0; j < ac; ++j) {
+                    sum += a(i, j) * b(j, k);
+                }
+                c(i, k) = sum;
+            }
+        }
+        return c;
+    }
+
+    bool operator==(const Matrix& a, const Matrix& b){
+        if(a.getRows() != b.getRows() || a.getCols() != b.getCols())
+            return false;
+        for (int i = 0; i < a.getRows(); ++i) {
+            for (int j = 0; j < a.getCols(); ++j) {
+                if(fabs( a(i,j) - b(i,j)) > 0.00001)return false;
+            }
+        }
+        return true;
+    }
+
+    bool operator!=(const Matrix& a, const Matrix& b){
+        return !(a == b);
+    }
 }
