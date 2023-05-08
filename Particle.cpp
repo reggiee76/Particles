@@ -173,7 +173,8 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // Call setSize(target.getSize().x, (-1.0) * target.getSize().y)
     // This will initialize its width and height to the size of the
     // RenderWindow stored in target and invert the y - axis
-    this->m_cartesianPlane.setSize(target.getSize().x, (-1, 0) * target.getSize().y);
+//    this->m_cartesianPlane.setSize(target.getSize().x, (-1, 0) * target.getSize().y);
+    this->m_cartesianPlane.setSize(target.getSize().x, target.getSize().y);
 
 
     // Store the location of the center of this particle on the Cartesian 
