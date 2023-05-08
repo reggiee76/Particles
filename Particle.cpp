@@ -229,7 +229,20 @@ void Particle::rotate(double theta)
 
 void Particle::scale(double c)
 {
+    // Store the value of m_centerCoordinate in a Vector2f temp
+    Vector2f temp = m_centerCoordinate;
 
+    // Shift back to the origin
+    translate(-m_centerCoordinate.x, -m_centerCoordinate.y);
+
+    // Construct a ScalingMatrix S with the specified scaling multiplier c
+    ScalingMatrix S(c);
+
+    // Multiply S by m_A
+    this->m_A = S * this->m_A;
+
+    // Shift back to the original center
+    translate(temp.x, temp.y);
 }
 
 void Particle::translate(double xShift, double yShift)
