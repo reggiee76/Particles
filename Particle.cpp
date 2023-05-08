@@ -228,7 +228,7 @@ void Particle::draw(RenderTarget& target, RenderStates states) const
 
 void Particle::update(float dt)
 {
-    dt = m_ttl - dt;
+     m_ttl -= dt;
     rotate(dt * m_radiansPerSec);
     scale(SCALE);
     
