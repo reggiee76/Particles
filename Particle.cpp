@@ -192,7 +192,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
 void Particle::draw(RenderTarget& target, RenderStates states) const
 {
 
-    VertexArray lines(TriangleFan, numPoints + 1);
+    VertexArray lines(TriangleFan, this->m_numPoints + 1);
 
     vector<Vector2f>center;
 }
@@ -227,7 +227,8 @@ void Particle::scale(double c)
 
 void Particle::translate(double xShift, double yShift)
 {
-    TranslationMatrix T(xShift, yShift);
+    // TODO: TranslationMatrix T(xShift, yShift, nCols)
+    TranslationMatrix T(xShift, yShift, 1);
     m_A = T + m_A;
 
     m_centerCoordinate.x += xShift;
