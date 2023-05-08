@@ -14,7 +14,7 @@ void Engine::run()
 	// Clock object to track time per frame
 	Clock clk;
 
-	// Particl used for unit tests
+	// Particle used for unit tests
 	cout << "Starting Particle unit tests..." << endl;
 	Particle p(m_Window, 4, { (int)m_Window.getSize().x / 2, (int)m_Window.getSize().y / 2 });
 	p.unitTests();

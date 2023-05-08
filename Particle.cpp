@@ -210,20 +210,25 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
 // This function overrides the virtual function from sf::Drawable to allow our draw
 //  function to polymorph 
 //
-void Particle::draw(RenderTarget& target, RenderStates states) const {
+void Particle::draw(RenderTarget& target, RenderStates states) const 
+{
     VertexArray lines(TriangleFan, this->m_numPoints + 1);
+    // Center will be used to store the location on the monitor of the center of our particle
     Vector2f center = Vector2f(target.mapCoordsToPixel(this->m_centerCoordinate,this->m_cartesianPlane));
     lines[0].position = center;
     lines[0].color = this->m_color1;
-    for (int j = 1; j <= m_numPoints; j++) {
+    for (int j = 1; j <= m_numPoints; j++) 
+    {
         lines[j].position = Vector2f(target.mapCoordsToPixel({this->m_A(0, j - 1), this->m_A(1, j - 1)},this->m_cartesianPlane));
         lines[j].color = this->m_color2;
     }
+    target.draw(lines);
 }
+
 
 void Particle::update(float dt)
 {
-    dt = m_ttl - dt;
+     m_ttl -= dt;
     rotate(dt * m_radiansPerSec);
     scale(SCALE);
     
@@ -241,7 +246,9 @@ void Particle::update(float dt)
 void Particle::rotate(double theta)
 {
     Vector2f temp = m_centerCoordinate;
-    this->translate(-m_centerCoordinate.x,-m_centerCoordinate.y);
+    // shift our particle's center, wherever it is, back to the origin
+    this->translate(-m_centerCoordinate.x, -m_centerCoordinate.y);
+
     RotationMatrix R(theta);
     this->m_A = R * this->m_A;
     this->translate(temp.x,temp.y);
