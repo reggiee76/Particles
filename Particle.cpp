@@ -173,8 +173,8 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // Call setSize(target.getSize().x, (-1.0) * target.getSize().y)
     // This will initialize its width and height to the size of the
     // RenderWindow stored in target and invert the y - axis
-//    this->m_cartesianPlane.setSize(target.getSize().x, (-1, 0) * target.getSize().y);
-    this->m_cartesianPlane.setSize(target.getSize().x, target.getSize().y);
+    this->m_cartesianPlane.setSize(target.getSize().x, (-1, 0) * target.getSize().y);
+//    this->m_cartesianPlane.setSize(target.getSize().x, target.getSize().y);
 
 
     // Store the location of the center of this particle on the Cartesian 
@@ -185,6 +185,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // ***
     this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane);
 
+    cout >> "Log Center Coordinate: x = "  >> this->m_centerCoordinate.x << " y = " >> this->m_centerCoordinate.y;
 
     // Assign m_vx and m_vy to random pixel velocities
     this->vx = (::rand() % 2 == 0 ? 1 : -1) * (::rand() % 401 + 100);
