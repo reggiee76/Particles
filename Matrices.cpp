@@ -101,23 +101,23 @@ namespace Matrices
     }
 
     RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2) {
-        this->a(0, 0) = std::cos(theta);
-        this->a(0, 1) = -std::sin(theta);
-        this->a(1, 0) = std::sin(theta);
-        this->a(1, 1) = std::cos(theta);
+        this->a.at(0).at(0) = std::cos(theta);
+        this->a.at(0).at(1) = -std::sin(theta);
+        this->a.at(1).at(0)  = std::sin(theta);
+        this->a.at(1).at(1)  = std::cos(theta);
     }
 
     ScalingMatrix::ScalingMatrix(double scale) : Matrix(2, 2) {
-        this->a(0, 0) = scale;
-        this->a(0, 1) = 0;
-        this->a(1, 0) = 0;
-        this->a(1, 1) = scale;
+        this->a.at(0).at(0)  = scale;
+        this->a.at(0).at(1)  = 0;
+        this->a.at(1).at(0)  = 0;
+        this->a.at(1).at(1)  = scale;
     }
 
     TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols) {
         for (int i = 0; i < nCols; ++i) {
-            this->a(i, 0) = xShift;
-            this->a(i, 1) = yShift;
+            this->a.at(i).at(0)  = xShift;
+            this->a.at(i).at(1)  = yShift;
         }
     }
 
