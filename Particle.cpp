@@ -189,7 +189,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     this->vy = ::rand() % 401 + 100;
 
     // Assign m_color1 and m_color2 to Colors
-    this->m_color1 = Colors::White;
+    this->m_color1 = Color::White;
     this->m_color2 = Color(::rand() % 256, ::rand() % 256, ::rand() % 256);
 
     // Generate numPoint vertices
