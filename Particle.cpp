@@ -182,7 +182,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // Use mapPixelToCoords with m_cartesianPlane to map mouseClickPosition to
     // the Cartesian plane and store it in m_centerCoordinate
     // ***
-    this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane);
+    this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition);
 
 
     // Assign m_vx and m_vy to random pixel velocities
