@@ -116,8 +116,8 @@ namespace Matrices
 
     TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols) {
         for (int i = 0; i < nCols; ++i) {
-            this->a.at(i).at(0)  = xShift;
-            this->a.at(i).at(1)  = yShift;
+            this->a.at(0).at(i)  = xShift;
+            this->a.at(1).at(i)  = yShift;
         }
     }
 
