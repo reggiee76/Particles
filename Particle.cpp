@@ -155,22 +155,25 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     m_numPoints = numPoints;
 
 
-    // Initialize m_radiansPerSec to a random 
+    // Initialize m_radiansPerSec to a random
     // angular velocity in the range [0:PI]
+    this->m_radiansPerSec = ((float) rand() / RAND_MAX) * (PI);
 
     // m_cartesianPlane will be used to map between monitor coordinates 
     // and Cartesian coordinates that are centered about the origin (0,0)
     // so our Matrim_cartesianPlane will be used to map between monitor coordinates 
     // and Cartesian coordinates that are centered about the origin (0,0) so our 
     // Matrix algebra will work correctlyx algebra will work correctly
-    
+
     // Call setCenter(0,0)
+    this->m_cartesianPlane.setCenter(0, 0);
 
 
     // Call setSize(target.getSize().x, (-1.0) * target.getSize().y)
     // This will initialize its width and height to the size of the
     // RenderWindow stored in target and invert the y - axis
-    
+    this->m_cartesianPlane.setSize(target.getSize().x, (-1, 0) * target.getSize().y);
+
 
     // Store the location of the center of this particle on the Cartesian 
     // plane in m_centerCoordinate
@@ -178,12 +181,30 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // Use mapPixelToCoords with m_cartesianPlane to map mouseClickPosition to
     // the Cartesian plane and store it in m_centerCoordinate
     // ***
+    this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane);
 
 
     // Assign m_vx and m_vy to random pixel velocities
+    this->vx = (::rand() % 2 == 0 ? 1 : -1) * (::rand() % 401 + 100);
+    this->vy = ::rand() % 401 + 100;
 
     // Assign m_color1 and m_color2 to Colors
-    
+    this->m_color1 = Colors::White;
+    this->m_color2 = Color(::rand() % 256, ::rand() % 256, ::rand() % 256);
+
+    // Generate numPoint vertices
+    float theta = ((float)rand() / (RAND_MAX)) * PI / 2; // Random initial angle between 0 and PI/2
+    float dTheta = 2 * PI / (numPoints - 1); // Amount to rotate per vertex
+    for (int j = 0; j < numPoints; j++)
+    {
+        float r = rand() % 61 + 20; // Random radius between 20 and 80
+        float dx = r * cos(theta);
+        float dy = r * sin(theta);
+        theta += dTheta;
+        this->m_A(0, j) = m_centerCoordinate.x + dx; // x-coordinate of vertex
+        this->m_A(1, j) = m_centerCoordinate.y + dy; // y-coordinate of vertex
+    }
+
 }
 
 // This function overrides the virtual function from sf::Drawable to allow our draw
