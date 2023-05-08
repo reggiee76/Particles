@@ -220,8 +220,11 @@ void Particle::update(float dt)
 
 void Particle::rotate(double theta)
 {
-    Vector2f temp = m_centerCoordinate ;
-
+    Vector2f temp = m_centerCoordinate;
+    this->translate(-m_centerCoordinate.x,-m_centerCoordinate.y);
+    RotationMatrix r(theta);
+    this->m_A = R * this->m_A;
+    this->translate(temp.x,temp.y);
 }
 
 void Particle::scale(double c)
