@@ -183,7 +183,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // Use mapPixelToCoords with m_cartesianPlane to map mouseClickPosition to
     // the Cartesian plane and store it in m_centerCoordinate
     // ***
-    this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane);
+    this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition);
 
     cout >> "Log Center Coordinate: x = "  >> this->m_centerCoordinate.x << " y = " >> this->m_centerCoordinate.y;
 
