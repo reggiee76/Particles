@@ -185,7 +185,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // ***
     this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition);
 
-    cout << "Log Center Coordinate: x = "  << this->m_centerCoordinate.x << " y = " >> this->m_centerCoordinate.y << endl;
+    cout << "Log Center Coordinate: x = "  << this->m_centerCoordinate.x << " y = " << this->m_centerCoordinate.y << endl;
 
     // Assign m_vx and m_vy to random pixel velocities
     this->vx = (::rand() % 2 == 0 ? 1 : -1) * (::rand() % 401 + 100);
