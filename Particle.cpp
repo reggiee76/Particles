@@ -147,7 +147,7 @@ void Particle::unitTests()
 
 Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) : m_A(2, numPoints)
 {
-    cout << "Log - Particle - MouseClick: x = " << mouseClickPosition.x << " y = " << mouseClickPosition.y;
+    cout << "Log - Particle - MouseClick: x = " << mouseClickPosition.x << " y = " << mouseClickPosition.y << endl;
     // Initialize m_ttl  to the global constant TTL, 
     // which gives it a time to live of 5 seconds
     m_ttl = TTL;
@@ -182,7 +182,7 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // Use mapPixelToCoords with m_cartesianPlane to map mouseClickPosition to
     // the Cartesian plane and store it in m_centerCoordinate
     // ***
-    this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition);
+    this->m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, this->m_cartesianPlane);
 
 
     // Assign m_vx and m_vy to random pixel velocities
