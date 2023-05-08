@@ -147,6 +147,7 @@ void Particle::unitTests()
 
 Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) : m_A(2, numPoints)
 {
+    cout << "Log - Particle - MouseClick: x = " << mouseClickPosition.x << " y = " << mouseClickPosition.y;
     // Initialize m_ttl  to the global constant TTL, 
     // which gives it a time to live of 5 seconds
     m_ttl = TTL;
