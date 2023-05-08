@@ -65,7 +65,8 @@ void Engine::input()
 					int numPoints = rand() % 26 + 25;  // Random num -> [25:50]
 
 					// Pass position of mouse click to contructor
-					m_particles.emplace_back(event.mouseButton.x, event.mouseButton.y, numPoints);
+                    Particle p(m_Window, numPoints, {event.mouseButton.x, event.mouseButton.y});
+                    this->m_particles.push_back(p);
 				}
 			}
 		}
