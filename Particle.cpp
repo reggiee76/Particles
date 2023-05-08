@@ -160,22 +160,18 @@ Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosit
     // angular velocity in the range [0:PI]
     this->m_radiansPerSec = ((float) rand() / RAND_MAX) * (PI);
 
-    // m_cartesianPlane will be used to map between monitor coordinates 
-    // and Cartesian coordinates that are centered about the origin (0,0)
-    // so our Matrim_cartesianPlane will be used to map between monitor coordinates 
-    // and Cartesian coordinates that are centered about the origin (0,0) so our 
-    // Matrix algebra will work correctlyx algebra will work correctly
-
-    // Call setCenter(0,0)
-    this->m_cartesianPlane.setCenter(0, 0);
-
-
     // Call setSize(target.getSize().x, (-1.0) * target.getSize().y)
     // This will initialize its width and height to the size of the
     // RenderWindow stored in target and invert the y - axis
     this->m_cartesianPlane.setSize(target.getSize().x, (-1, 0) * target.getSize().y);
-//    this->m_cartesianPlane.setSize(target.getSize().x, target.getSize().y);
 
+    // m_cartesianPlane will be used to map between monitor coordinates
+    // and Cartesian coordinates that are centered about the origin (0,0)
+    // so our Matrim_cartesianPlane will be used to map between monitor coordinates
+    // and Cartesian coordinates that are centered about the origin (0,0) so our
+    // Matrix algebra will work correctlyx algebra will work correctly
+    // Call setCenter(0,0)
+    this->m_cartesianPlane.setCenter(0, 0);
 
     // Store the location of the center of this particle on the Cartesian 
     // plane in m_centerCoordinate
