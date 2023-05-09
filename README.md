@@ -14,10 +14,11 @@ gitGraph
     checkout dev
     merge main
     checkout main
+    commit id: "a03ce4cc" tag:"reggiee"
     branch debug
     checkout debug
     commit id: "bea6eea"
     checkout main
     merge debug
-    commit id: "cb43aa4"
+    commit id: "cb43aa4" tag: "main" type:HIGHLIGHT
 ```
