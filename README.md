@@ -13,4 +13,11 @@ gitGraph
     commit id:"md." type:NORMAL
     checkout dev
     merge main
+    checkout main
+    branch debug
+    checkout debug
+    commit id: "bea6eea"
+    checkout main
+    merge debug
+    commit id: "cb43aa4"
 ```
