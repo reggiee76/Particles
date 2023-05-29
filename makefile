@@ -2,8 +2,8 @@ SRC_DIR := .
 OBJ_DIR := .
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
-LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-CXXFLAGS := -g -Wall -fpermissive -std=c++17
+LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -L /opt/homebrew/Cellar/sfml/2.5.1_2/lib
+CXXFLAGS := -g -Wall -fpermissive -std=c++17 -I /opt/homebrew/Cellar/sfml/2.5.1_2/include
 TARGET := Particles
 
 $(TARGET): $(OBJ_FILES)
